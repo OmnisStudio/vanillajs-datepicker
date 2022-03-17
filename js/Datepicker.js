@@ -197,6 +197,11 @@ export default class Datepicker {
 
     if (inline) {
       this.show();
+      // set up listeners, required for Omnis implementation
+      const listeners = [
+        [element, 'keydown', onKeydown.bind(null, this)],
+      ];
+      registerListeners(this, listeners);
     } else {
       // set up event listeners in other modes
       const onMousedownDocument = onClickOutside.bind(null, this);
